@@ -11,6 +11,18 @@ $: cd falcon_S3
 $: sudo pip3 install -r requirements.txt
 ```
 
+* Init AWS engine (you must have 'Access Key ID', 'Secret Access Key' and 'Region' into your home directory)
+```bash
+$: cat ~/.aws/credentials
+[default]
+aws_access_key_id = <some_aws_access_key_id>
+aws_secret_access_key = <some_aws_secret_access_key>
+region = us-west-2
+
+$: cd falcon_S3/app
+$: python3 init_engine.py
+```
+
 * Run celery:
 ```bash
 $: cd falcon_S3/app

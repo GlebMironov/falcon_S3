@@ -1,5 +1,5 @@
 # AWS S3 bucket name
-AWS_BUCKET_NAME = 'nimble2017'
+AWS_BUCKET_NAME = 'falcon_S3'
 # AWS DynamoDB table name
 AWS_TABLE_NAME = 'FileKeys'
 # Path for temporary storage
