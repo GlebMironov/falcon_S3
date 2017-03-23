@@ -1,4 +1,3 @@
-import hashlib
 import os
 
 import boto3
@@ -7,37 +6,12 @@ from botocore.exceptions import ClientError
 from celery import Celery
 
 from config import AWS_BUCKET_NAME, AWS_TABLE_NAME, UPLOAD_PATH, DOWNLOAD_PATH
+from utils import utils
 
 
-app = Celery('tasks', backend='rpc://', broker='pyamqp://')
+app = Celery('tasks')
+app.config_from_object('celeryconfig')
 
-
-def read_chunks(f, chunk_size=8192):
-    """Read file
-    
-        Note: 
-            Reads potentially big file by chunks
-    
-    """
-
-    while True:
-        data = f.read(chunk_size)
-        if not data:
-            break
-        yield data
-
-def md5(f):
-    """Obtain the md5 digest
-    
-        Note: 
-            Obtains md5 hash function of file-like object
-    
-    """
-
-    h = hashlib.md5()
-    for chunk in read_chunks(f):
-        h.update(chunk)
-    return h.hexdigest()
 
 @app.task
 def put_data_to_s3(file_path):
@@ -56,7 +30,7 @@ def put_data_to_s3(file_path):
         table = db.Table(AWS_TABLE_NAME)
     
         with open(file_path, 'rb') as f:
-            hash_string = md5(f)
+            hash_string = utils.md5(f)
     
         path, file_name = os.path.split(file_path)
         table.put_item(

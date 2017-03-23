@@ -35,7 +35,7 @@ $: cd falcon_S3/app
 $: gunicorn -b 0.0.0.0:5000 app:app
 ```
 
-* Usage application:
+* Application usage:
 ```bash
 $: http -f PUT localhost:5000/storage file@<some path to file>/test.bin
 HTTP/1.1 201 Created
