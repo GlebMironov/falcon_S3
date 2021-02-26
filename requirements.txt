@@ -21,7 +21,7 @@ python-apt==0.9.3.5ubuntu2
 python-dateutil==2.6.0
 python-mimeparse==1.6.0
 pytz==2016.10
-requests==2.13.0
+requests==2.20.0
 s3transfer==0.1.10
 six==1.5.2
 ufw==0.34-rc-0ubuntu2
