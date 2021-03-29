@@ -1,4 +1,4 @@
-Pygments==2.2.0
+Pygments==2.7.4
 amqp==2.1.4
 billiard==3.5.0.2
 boto3==1.4.4
