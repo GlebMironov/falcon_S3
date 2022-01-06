@@ -3,7 +3,7 @@ amqp==2.1.4
 billiard==3.5.0.2
 boto3==1.4.4
 botocore==1.5.27
-celery==4.0.2
+celery==5.2.2
 chardet==2.2.1
 colorama==0.2.5
 command-not-found==0.3
